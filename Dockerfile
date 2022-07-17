@@ -5,7 +5,7 @@ COPY . ./
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=target \
     TARGET=$(uname -m)-unknown-linux-musl \
-    && ls target/**/* \
+    && ( ls target/**/* || true ) \
     && cargo build --release --target $TARGET \
     && mv target/$TARGET/release/tiny-rs /tmp
 
