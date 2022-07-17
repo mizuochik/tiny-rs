@@ -8,8 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to DockerHub
@@ -23,6 +21,5 @@ jobs:
           push: true
           tags: mizuochik/tiny-rs:${{ github.sha }}
           file: Dockerfile
-          platforms: linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
