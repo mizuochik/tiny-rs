@@ -1,4 +1,6 @@
 FROM rust AS rust
+RUN rustup target add x86_64-unknown-linux-musl
+RUN rustup target add aarch64-unknown-linux-musl
 WORKDIR /build
 COPY . ./
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
